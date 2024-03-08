@@ -5,7 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {colors} from '../theme/theme';
 import AuthHeader from '../components/AuthHeader';
 import CustomTextInput from '../components/CustomTextInput';
-import auth from '@react-native-firebase/auth';
+import {signUp} from '../controller/authController';
 
 interface RegistrationScreenProps {
   navigation: any;
@@ -22,22 +22,12 @@ export default function Registration(props: RegistrationScreenProps) {
 
   const handleSignUp = async () => {
     setLoading(true);
-    auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('User account created & signed in!');
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-
-        console.error(error);
-      });
+    try {
+      signUp(email, password);
+      navigation.navigate('Onboard');
+    } catch (error) {
+      console.log('error while signing up:', error);
+    }
   };
 
   return (

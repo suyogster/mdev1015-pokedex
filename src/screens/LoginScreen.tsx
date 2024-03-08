@@ -5,7 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {colors} from '../theme/theme';
 import AuthHeader from '../components/AuthHeader';
 import CustomTextInput from '../components/CustomTextInput';
-import auth from '@react-native-firebase/auth';
+import {signIn} from '../controller/authController';
 
 interface LoginScreenProps {
   navigation: any;
@@ -19,12 +19,8 @@ export default function LoginScreen(props: LoginScreenProps) {
 
   const handleLogin = async () => {
     try {
-      const userCredential = await auth().signInWithEmailAndPassword(
-        email,
-        password,
-      );
-      const user = userCredential.user;
-      navigation.navigate('Onboard', {user});
+      signIn(email, password);
+      navigation.navigate('Onboard');
     } catch (error) {
       console.error('Login error:', error);
     }
