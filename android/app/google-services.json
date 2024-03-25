@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "594433661760",
+    "project_id": "pokedox-2024",
+    "storage_bucket": "pokedox-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594433661760:android:5b39872b6ff4f9afdc38a5",
+        "android_client_info": {
+          "package_name": "com.mdev1015pokedexcli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa1R2foDPep4yGRgN_JaNz0vL1gkEcNCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
