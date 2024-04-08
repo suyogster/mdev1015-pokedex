@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
-import { colors } from '../theme/theme';
-import { user1 } from '../data/mockedUser';
+import {colors} from '../theme/theme';
+import {user1} from '../data/mockedUser';
 
 const SettingList = [
   {
@@ -22,7 +23,7 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <Image
-        style={{ top: 50, zIndex: 2 }}
+        style={{top: 50, zIndex: 2}}
         source={require('../../assets/UserProfile.png')}
       />
       <View style={styles.outerLayer}>
@@ -33,8 +34,7 @@ export default function ProfileScreen() {
             fontWeight: '500',
             fontSize: 18,
             paddingBottom: 10,
-          }}
-        >
+          }}>
           {user1.username}
         </Text>
         <View style={styles.innerLayer}>
@@ -43,22 +43,20 @@ export default function ProfileScreen() {
               <View
                 style={{
                   flexDirection: 'row',
-                }}
-              >
+                }}>
                 <Image source={item.icon} style={{}} />
                 <Text
                   style={{
                     marginLeft: 15,
                     color: '#495767',
                     fontWeight: '600',
-                  }}
-                >
+                  }}>
                   {item.title}
                 </Text>
               </View>
 
               <Image
-                style={{ tintColor: 'gray' }}
+                style={{tintColor: 'gray'}}
                 source={require('../../assets/Right_Icon.png')}
               />
             </View>

@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
 /*This component is also used in the pokemon details screen for describing the stats of each pokemon */
@@ -14,15 +15,16 @@ const descriptionKeys = ['Attack', 'HP', 'Speed'];
 
 function renderDescription(item: string, progress: number) {
   return (
-    <View style={[styles.progressBar, { width: '100%', height: '20%' }]}>
+    <View style={[styles.progressBar, {width: '100%', height: '20%'}]}>
       <View
         style={[
           styles.progress,
           {
             width: `${Math.min(100, Math.max(0, progress))}%`,
           },
-        ]}
-      ></View>
+        ]}>
+        <Text>Description</Text>
+      </View>
     </View>
   );
 }
@@ -35,7 +37,7 @@ export default function DetailStats(props: DetailStatsProp) {
           <Text style={styles.keyText}>{descriptionKeys[index]}</Text>
           {renderDescription(
             item,
-            props[item.toLowerCase() as keyof DetailStatsProp]
+            props[item.toLowerCase() as keyof DetailStatsProp],
           )}
         </View>
       ))}

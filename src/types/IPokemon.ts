@@ -21,4 +21,5 @@ export default interface IPokemon {
   weaknesses: string[];
   primaryColor: string;
   image: any;
+  // eslint-disable-next-line semi
 }

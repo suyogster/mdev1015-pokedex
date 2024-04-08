@@ -1,12 +1,11 @@
 import {
   View,
-  Text,
   StyleSheet,
   TextInput,
   Image,
   TouchableOpacity,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 /*This is a search component use for displaying the desired pokemon in the main screen */
 /*It is a simple input component that uses the TextInput component */
@@ -22,7 +21,7 @@ export default function SearchBar(props: SearchBarProps) {
     setQuery('');
   };
 
-  const { onType } = props;
+  const {onType} = props;
   return (
     <View style={styles.container}>
       <Image
@@ -32,8 +31,8 @@ export default function SearchBar(props: SearchBarProps) {
       <TextInput
         style={styles.textInput}
         value={query}
-        placeholder='Search Pokemon, Move, etc...'
-        onChangeText={(value) => setQuery(value)}
+        placeholder="Search Pokemon, Move, etc..."
+        onChangeText={value => setQuery(value)}
       />
       <TouchableOpacity onPress={() => handleOnClear()}>
         <Image
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     minHeight: 40,
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 2,
     alignContent: 'center',
@@ -67,6 +66,6 @@ const styles = StyleSheet.create({
     color: 'black',
     marginLeft: 5,
   },
-  searchIcon: { height: 20, width: 20 },
-  cancelIcon: { height: 20, width: 20, alignSelf: 'flex-end' },
+  searchIcon: {height: 20, width: 20},
+  cancelIcon: {height: 20, width: 20, alignSelf: 'flex-end'},
 });

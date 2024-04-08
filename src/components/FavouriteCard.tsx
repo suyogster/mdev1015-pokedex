@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import IPokemon from '../types/IPokemon';
 
@@ -11,20 +12,19 @@ interface PokemonCardProps {
 }
 
 export default function FavoriteCard(props: PokemonCardProps) {
-  const { id, data, navigation } = props;
-  const { name, primaryColor, image, type } = data;
+  const {id, data, navigation} = props;
+  const {name, primaryColor, image, type} = data;
   return (
     <TouchableOpacity
       key={data.name}
-      style={[styles.container, { backgroundColor: primaryColor }]}
-      onPress={() => navigation.navigate('Detail', { data, index: id })}
-    >
+      style={[styles.container, {backgroundColor: primaryColor}]}
+      onPress={() => navigation.navigate('Detail', {data, index: id})}>
       <View key={data.name} style={styles.row}>
         <View>
-          <Text style={[styles.firstRowText, { alignSelf: 'flex-start' }]}>
+          <Text style={[styles.firstRowText, {alignSelf: 'flex-start'}]}>
             {id}
           </Text>
-          <Text style={[styles.firstRowText, { alignSelf: 'flex-start' }]}>
+          <Text style={[styles.firstRowText, {alignSelf: 'flex-start'}]}>
             {name}
           </Text>
           <View
@@ -32,14 +32,12 @@ export default function FavoriteCard(props: PokemonCardProps) {
               alignSelf: 'flex-end',
               width: '100%',
               marginTop: 50,
-            }}
-          >
+            }}>
             <View
               style={[
                 styles.typeSection,
-                { backgroundColor: '#FFFFFF', opacity: 0.5 },
-              ]}
-            >
+                {backgroundColor: '#FFFFFF', opacity: 0.5},
+              ]}>
               <Text> {type[0]} </Text>
             </View>
           </View>
@@ -55,16 +53,16 @@ export default function FavoriteCard(props: PokemonCardProps) {
           source={image}
         />
       </View>
-      <TouchableOpacity style={{ position: 'absolute', top: 15, right: 15 }}>
+      <TouchableOpacity style={{position: 'absolute', top: 15, right: 15}}>
         <Image
-          style={{ tintColor: 'red' }}
+          style={{tintColor: 'red'}}
           source={require('../../assets/FavoriteIcon.png')}
         />
       </TouchableOpacity>
 
-      <View style={{ marginVertical: 2 }}></View>
+      <View style={{marginVertical: 2}} />
 
-      <TouchableOpacity style={{ position: 'absolute', bottom: 15, right: 15 }}>
+      <TouchableOpacity style={{position: 'absolute', bottom: 15, right: 15}}>
         <Image source={require('../../assets/DeleteIcon.png')} />
       </TouchableOpacity>
     </TouchableOpacity>
@@ -80,7 +78,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 20,
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 2,
     justifyContent: 'space-around',

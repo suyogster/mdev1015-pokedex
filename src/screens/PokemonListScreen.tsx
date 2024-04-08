@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { colors } from '../theme/theme';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {colors} from '../theme/theme';
 import SearchBar from '../components/SearchBar';
 import PokemonCard from '../components/PokemonCard';
-import { pokemonData } from '../data/mockedPokemon';
+import {pokemonData} from '../data/mockedPokemon';
 
 /**
  * This screen contains Search Bar functionality that displays the Pokemon cards by number
  * It also navigates to PokemonDetailScreen
  */
-
 export default function PokemonListScreen(props: any) {
   const [query, setQuery] = useState<string>('');
 
@@ -26,14 +25,14 @@ export default function PokemonListScreen(props: any) {
       <View style={styles.listSection}>
         <FlatList
           data={pokemonData}
-          renderItem={(items) => (
+          renderItem={items => (
             <PokemonCard
               id={`#00${items.index}`}
               data={items.item}
               navigation={props.navigation}
             />
           )}
-          keyExtractor={(item) => item.name}
+          keyExtractor={item => item.name}
           numColumns={2}
         />
       </View>

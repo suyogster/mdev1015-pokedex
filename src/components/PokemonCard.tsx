@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import React, { useEffect } from 'react';
-import { colors } from '../theme/theme';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import React from 'react';
 import IPokemon from '../types/IPokemon';
 
 /*This is a component to display the pokemon in a form of Card component in the main screen */
@@ -12,24 +12,21 @@ interface PokemonCardProps {
 }
 
 export default function PokemonCard(props: PokemonCardProps) {
-  const { id, data, navigation } = props;
-  const { name, primaryColor, image, type } = data;
+  const {id, data, navigation} = props;
+  const {name, primaryColor, image, type} = data;
   return (
     <TouchableOpacity
       key={data.name}
-      style={[styles.container, { backgroundColor: primaryColor }]}
-      onPress={() => navigation.navigate('Detail', { data, index: id })}
-    >
+      style={[styles.container, {backgroundColor: primaryColor}]}
+      onPress={() => navigation.navigate('Detail', {data, index: id})}>
       <View key={data.name} style={styles.row}>
-        <Text style={[styles.firstRowText, { alignSelf: 'flex-start' }]}>
+        <Text style={[styles.firstRowText, {alignSelf: 'flex-start'}]}>
           {name}
         </Text>
-        <Text style={[styles.firstRowText, { alignSelf: 'flex-end' }]}>
-          {id}
-        </Text>
+        <Text style={[styles.firstRowText, {alignSelf: 'flex-end'}]}>{id}</Text>
       </View>
 
-      <View style={{ marginVertical: 2 }}></View>
+      <View style={{marginVertical: 2}} />
       <View style={styles.row}>
         <View
           key={data.name}
@@ -37,17 +34,15 @@ export default function PokemonCard(props: PokemonCardProps) {
             alignSelf: 'flex-start',
             justifyContent: 'flex-start',
             width: '50%',
-          }}
-        >
+          }}>
           {type.map((type, index) => (
             <View
               key={index}
               id={index.toString()}
               style={[
                 styles.typeSection,
-                { backgroundColor: '#FFFFFF', opacity: 0.5 },
-              ]}
-            >
+                {backgroundColor: '#FFFFFF', opacity: 0.5},
+              ]}>
               <Text> {type} </Text>
             </View>
           ))}
@@ -74,7 +69,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 2,
     justifyContent: 'space-around',

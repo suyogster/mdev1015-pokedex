@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, Platform } from 'react-native';
-import React, { useState } from 'react';
-import { colors } from '../theme/theme';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
+import React, {useState} from 'react';
+import {colors} from '../theme/theme';
 import Message1 from '../components/onboard/Message1';
 import Message2 from '../components/onboard/Message2';
 import Message3 from '../components/onboard/Message3';
@@ -20,24 +21,24 @@ export default function OnboardingScreen(props: any) {
               style={[
                 styles.dot,
                 page === 0
-                  ? { borderColor: '#495767' }
-                  : { borderColor: '#827373' },
+                  ? {borderColor: '#495767'}
+                  : {borderColor: '#827373'},
               ]}
             />
             <View
               style={[
                 styles.dot,
                 page === 1
-                  ? { borderColor: '#495767' }
-                  : { borderColor: '#827373' },
+                  ? {borderColor: '#495767'}
+                  : {borderColor: '#827373'},
               ]}
             />
             <View
               style={[
                 styles.dot,
                 page === 2
-                  ? { borderColor: '#495767' }
-                  : { borderColor: '#827373' },
+                  ? {borderColor: '#495767'}
+                  : {borderColor: '#827373'},
               ]}
             />
           </View>
@@ -47,16 +48,14 @@ export default function OnboardingScreen(props: any) {
           <View style={styles.lastRowButton}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => props.navigation.navigate('Home')}
-            >
+              onPress={() => props.navigation.navigate('Home')}>
               <Text
                 style={{
                   textAlign: 'center',
                   fontWeight: 'bold',
                   fontSize: 16,
                   color: 'white',
-                }}
-              >
+                }}>
                 GET STARTED
               </Text>
             </TouchableOpacity>
@@ -65,8 +64,7 @@ export default function OnboardingScreen(props: any) {
           <View style={styles.lastRow}>
             {page == 0 ? (
               <TouchableOpacity
-                onPress={() => props.navigation.navigate('Home')}
-              >
+                onPress={() => props.navigation.navigate('Home')}>
                 <Text style={styles.onboardTitle}>Skip</Text>
               </TouchableOpacity>
             ) : (
@@ -114,7 +112,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'flex-end',
     //change for android layout
-    marginBottom: Platform.OS == "ios" ? 0 : 20,
+    marginBottom: Platform.OS === 'ios' ? 0 : 20,
   },
   button: {
     backgroundColor: '#F57D31',
@@ -128,7 +126,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     //change for android layout
-    marginBottom: Platform.OS == "ios" ? 0 : 20,
+    marginBottom: Platform.OS === 'ios' ? 0 : 20,
   },
   dot: {
     borderWidth: 4,
@@ -136,6 +134,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     maxHeight: 3,
     //change for android
-    marginTop: Platform.OS == "ios" ? 0 : 40,
+    marginTop: Platform.OS === 'ios' ? 0 : 40,
   },
 });

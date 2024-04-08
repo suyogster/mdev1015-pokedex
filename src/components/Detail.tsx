@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
-import React, { useEffect } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, StyleSheet, Image} from 'react-native';
+import React from 'react';
 
 /*This component is to be used for the details screen of each pokemon for describing its abilities and strengths */
 
@@ -34,21 +35,20 @@ function renderDescription(item: string, props: DetailProps) {
         <View
           style={[
             styles.typeContainer,
-            { backgroundColor: '#FFFFFF', opacity: 0.5 },
-          ]}
-        >
+            {backgroundColor: '#FFFFFF', opacity: 0.5},
+          ]}>
           <Text> {props.weaknesses[0]} </Text>
         </View>
       </View>
     );
   } else if (item === 'Genders') {
     return (
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ flexDirection: 'row' }}>
+      <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row'}}>
           <Image source={require('../../assets/male_icon.png')} />
           <Text> {props.genderRatio.male} </Text>
         </View>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{flexDirection: 'row'}}>
           <Image source={require('../../assets/female_icon.png')} />
           <Text> {props.genderRatio.female} </Text>
         </View>
@@ -76,8 +76,7 @@ export default function Detail(props: DetailProps) {
               justifyContent: 'flex-end',
               alignContent: 'flex-end',
               alignItems: 'flex-end',
-            }}
-          >
+            }}>
             {renderDescription(item, props)}
           </View>
         </View>
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 5,
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 2,
   },

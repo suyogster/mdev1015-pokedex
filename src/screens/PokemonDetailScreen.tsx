@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   Text,
@@ -7,13 +8,13 @@ import {
   SafeAreaView,
   Platform,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import IPokemon from '../types/IPokemon';
 import Detail from '../components/Detail';
 import DetailStats from '../components/DetailStats';
 
 export default function PokemonDetailScreen(props: any) {
-  const { data, index } = props.route.params;
+  const {data, index} = props.route.params;
   const {
     primaryColor,
     image,
@@ -34,8 +35,7 @@ export default function PokemonDetailScreen(props: any) {
   return (
     <SafeAreaView style={styles.container}>
       <SafeAreaView
-        style={[styles.firstSection, { backgroundColor: primaryColor }]}
-      >
+        style={[styles.firstSection, {backgroundColor: primaryColor}]}>
         <View style={styles.customHeader}>
           <TouchableOpacity onPress={() => props.navigation.goBack()}>
             <Image source={require('../../assets/Back_Arrow.png')} />
@@ -44,7 +44,7 @@ export default function PokemonDetailScreen(props: any) {
           <View style={styles.customHeaderRightIcons}>
             <TouchableOpacity onPress={() => setSelected(!selected)}>
               <Image
-                style={selected ? { tintColor: 'red' } : { tintColor: 'white' }}
+                style={selected ? {tintColor: 'red'} : {tintColor: 'white'}}
                 source={require('../../assets/FavoriteIcon.png')}
               />
             </TouchableOpacity>
@@ -53,7 +53,7 @@ export default function PokemonDetailScreen(props: any) {
         </View>
 
         <View style={styles.multimediaSection}>
-          <Image source={image} style={{ height: 250, width: 250 }} />
+          <Image source={image} style={{height: 250, width: 250}} />
           <Text style={styles.nameText}>{name}</Text>
           <View style={styles.typeSection}>
             <TouchableOpacity disabled={page === 0} onPress={() => setPage(0)}>
@@ -61,15 +61,14 @@ export default function PokemonDetailScreen(props: any) {
             </TouchableOpacity>
 
             <View style={styles.typeSection}>
-              {type.map((type, index) => (
+              {type.map((type1, index1) => (
                 <View
-                  key={`#${index.toString()}`}
+                  key={`#${index1.toString()}`}
                   style={[
                     styles.typeContainer,
-                    { backgroundColor: '#FFFFFF', opacity: 0.5 },
-                  ]}
-                >
-                  <Text> {type} </Text>
+                    {backgroundColor: '#FFFFFF', opacity: 0.5},
+                  ]}>
+                  <Text> {type1} </Text>
                 </View>
               ))}
             </View>
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     paddingHorizontal: 20,
     //change for android layout
-    paddingTop: Platform.OS == "ios" ? 0 : 30,
+    paddingTop: Platform.OS === 'ios' ? 0 : 30,
   },
 
   customHeaderRightIcons: {
@@ -195,7 +194,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 5,
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 2,
     marginHorizontal: 5,
@@ -205,7 +204,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
     margin: 20,
     //Change for android
-    maxHeight: Platform.OS == "ios" ? 0 : '40%',
+    maxHeight: Platform.OS === 'ios' ? 0 : '40%',
   },
 
   statsHeader: {
@@ -224,6 +223,6 @@ const styles = StyleSheet.create({
   statsContentSection: {
     flex: 1,
     //Change for android
-    paddingBottom: Platform.OS == "ios" ? 0 : 10,
+    paddingBottom: Platform.OS === 'ios' ? 0 : 10,
   },
 });
