@@ -15,12 +15,19 @@ import { usePokemon } from '../context/PokemonContext';
 export default function PokemonListScreen(props: any) {
     const [query, setQuery] = useState<string>('');
 
-    const { pokemonList, loading, error, fetchPokemonData } = usePokemon();
+    const { pokemonList, loading, fetchPokemonData } = usePokemon();
 
     useEffect(() => {
         fetchPokemonData();
     }, []);
 
+    if (loading) {
+        return (
+            <Text>
+                NO DATA !
+            </Text>
+        );
+    }
 
     return (
         <View style={styles.container}>

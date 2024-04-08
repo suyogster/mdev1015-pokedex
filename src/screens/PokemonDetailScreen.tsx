@@ -7,34 +7,62 @@ import {
     SafeAreaView,
     Platform,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IPokemon from '../types/IPokemon';
 import Detail from '../components/Detail';
 import DetailStats from '../components/DetailStats';
+import { ApiPokemonDetail } from '../types/IPokemon';
+
+const cardColors = {
+    primaryColor: '#FCC800',
+    secondaryColor: '#6890F0',
+}
 
 export default function PokemonDetailScreen(props: any) {
     const { data, index } = props.route.params;
-    const {
-        primaryColor,
-        image,
-        name,
-        type,
-        baseStats,
-        species,
-        height,
-        weaknesses,
-        weight,
-        genderRatio,
-        abilities,
-    } = data as IPokemon;
+
+    const defaultImage = require('../../assets/Logo_Pokedex.png');
+    console.log("The details data each ::>>", data);
+
+    useEffect(() => {
+        console.log("This is an reload ro check data::>>");
+    }, [data]);
+
+    if (!data) {
+        return (
+            <View style={styles.container}>
+                <Image source={defaultImage} />
+                <Text>
+                    Sorry, couldn't fetch data as of now !
+                </Text>
+            </View>
+        );
+    }
+
+    const name = data.name ?? null;
+    const types = data.types ?? null;
+    const stats = data.stats ?? null;
+    const species = data.species ?? null;
+    const height = data.height ?? 0;
+    const weight = data.weight ?? 0;
+    const abilities = data.abilities ?? 0;
+    const base_experience = data.base_experience ?? 0;
+    const order = data.order ?? 0;
 
     const [page, setPage] = useState<number>(0);
     const [selected, setSelected] = useState<boolean>(false);
 
+    const assignColor = (id: number) => {
+        if (id > 10) {
+            return cardColors.secondaryColor;
+        }
+        return cardColors.primaryColor;
+    };
+
     return (
         <SafeAreaView style={styles.container}>
             <SafeAreaView
-                style={[styles.firstSection, { backgroundColor: primaryColor }]}
+                style={[styles.firstSection, { backgroundColor: assignColor(index) }]}
             >
                 <View style={styles.customHeader}>
                     <TouchableOpacity onPress={() => props.navigation.goBack()}>
@@ -53,15 +81,15 @@ export default function PokemonDetailScreen(props: any) {
                 </View>
 
                 <View style={styles.multimediaSection}>
-                    <Image source={image} style={{ height: 250, width: 250 }} />
-                    <Text style={styles.nameText}>{name}</Text>
+                    <Image source={defaultImage} style={{ height: 250, width: 250 }} />
+                    <Text style={styles.nameText}>{name ?? "--"}</Text>
                     <View style={styles.typeSection}>
                         <TouchableOpacity disabled={page === 0} onPress={() => setPage(0)}>
                             <Image source={require('../../assets/Left_Icon.png')} />
                         </TouchableOpacity>
 
                         <View style={styles.typeSection}>
-                            {type.map((type, index) => (
+                            {types ? (types.map((item, index) => (
                                 <View
                                     key={`#${index.toString()}`}
                                     style={[
@@ -69,9 +97,9 @@ export default function PokemonDetailScreen(props: any) {
                                         { backgroundColor: '#FFFFFF', opacity: 0.5 },
                                     ]}
                                 >
-                                    <Text> {type} </Text>
+                                    <Text> {item?.type?.name} </Text>
                                 </View>
-                            ))}
+                            ))) : "NO TYPES"}
                         </View>
 
                         <TouchableOpacity disabled={page === 1} onPress={() => setPage(1)}>
@@ -88,7 +116,7 @@ export default function PokemonDetailScreen(props: any) {
                         {page === 0 && (
                             <View
                                 style={{
-                                    borderColor: primaryColor,
+                                    borderColor: assignColor(index),
                                     borderWidth: 2,
                                     width: '120%',
                                 }}
@@ -100,7 +128,7 @@ export default function PokemonDetailScreen(props: any) {
                         {page === 1 && (
                             <View
                                 style={{
-                                    borderColor: primaryColor,
+                                    borderColor: assignColor(index),
                                     borderWidth: 2,
                                     width: '120%',
                                 }}
@@ -115,15 +143,15 @@ export default function PokemonDetailScreen(props: any) {
                             species={species}
                             height={height}
                             weight={weight}
-                            weaknesses={weaknesses}
+                            stats={stats}
                             abilities={abilities}
-                            genderRatio={genderRatio}
+                        //genderRatio={genderRatio}
                         />
                     ) : (
                         <DetailStats
-                            attack={baseStats.attack}
-                            hp={baseStats.hp}
-                            speed={baseStats.speed}
+                            attack={base_experience}
+                            hp={height}
+                            speed={order}
                         />
                     )}
                 </View>

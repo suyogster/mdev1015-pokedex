@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { colors } from '../theme/theme';
-import IPokemon from '../types/IPokemon';
+import { ApiPokemonDetail } from '../types/IPokemon';
 
 /*This is a component to display the pokemon in a form of Card component in the main screen */
 
@@ -23,13 +23,14 @@ interface PokemonCardProps {
 
 export default function PokemonCard(props: PokemonCardProps) {
     const { id, data, navigation } = props;
-    //const { name, primaryColor, image, type } = data;
 
     const { name, url } = data;
 
-    const [pokemonDetail, setPokemonDetail] = useState<PokemonCollection[] | null>(null);
+    const [pokemonDetail, setPokemonDetail] = useState<ApiPokemonDetail | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<Error | null | string>(null);
+
+    const defaultImage = require('../../assets/Logo_Pokedex.png');
 
     const assignColor = (id: number) => {
         if (id > 10) {
@@ -46,7 +47,8 @@ export default function PokemonCard(props: PokemonCardProps) {
                 throw new Error('Failed to fetch Pokémon DETAIL !!');
             }
             const json = await response.json();
-            setPokemonDetail(json.results);
+
+            setPokemonDetail(json);
         } catch (error) {
             if (error) {
                 setError(JSON.stringify(error));
@@ -60,13 +62,13 @@ export default function PokemonCard(props: PokemonCardProps) {
     // Fetch Pokémon data on component mount
     useEffect(() => {
         fetchPokemonDetail();
-    }, []);
+    }, [pokemonDetail]);
 
     return (
         <TouchableOpacity
             key={data.name}
             style={[styles.container, { backgroundColor: assignColor(id) }]}
-            onPress={() => navigation.navigate('Detail', { data, index: id })}
+            onPress={() => navigation.navigate('Detail', { pokemonDetail, index: id })}
         >
             <View key={data.name} style={styles.row}>
                 <Text style={[styles.firstRowText, { alignSelf: 'flex-start' }]}>
@@ -78,16 +80,16 @@ export default function PokemonCard(props: PokemonCardProps) {
             </View>
 
             <View style={{ marginVertical: 2 }}></View>
-            {/*<View style={styles.row}>
+            <View style={styles.row}>
                 <View
-                    key={data.name}
+                    key={name}
                     style={{
                         alignSelf: 'flex-start',
                         justifyContent: 'flex-start',
                         width: '50%',
                     }}
                 >
-                    {type.map((type, index) => (
+                    {pokemonDetail?.types.map((item, index) => (
                         <View
                             key={index}
                             id={index.toString()}
@@ -96,7 +98,7 @@ export default function PokemonCard(props: PokemonCardProps) {
                                 { backgroundColor: '#FFFFFF', opacity: 0.5 },
                             ]}
                         >
-                            <Text> {type} </Text>
+                            <Text> {item?.type?.name} </Text>
                         </View>
                     ))}
                 </View>
@@ -107,9 +109,9 @@ export default function PokemonCard(props: PokemonCardProps) {
                         alignSelf: 'flex-end',
                         marginLeft: 10,
                     }}
-                    source={image}
+                    source={defaultImage}
                 />
-            </View>*/}
+            </View>
         </TouchableOpacity>
     );
 }

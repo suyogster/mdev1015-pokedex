@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
 import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { ApiPokemonDetail } from '../types/IPokemon';
 
 /*This component is to be used for the details screen of each pokemon for describing its abilities and strengths */
 
@@ -13,22 +14,33 @@ const descriptionKeys = [
 ];
 
 interface DetailProps {
-    species: string;
-    height: string;
-    weight: string;
-    abilities: string[];
-    genderRatio: {
-        male?: string;
-        female?: string;
-        genderless?: boolean;
+    species: {
+        name: string;
+        url: string;
     };
-    weaknesses: string[];
+    height: number;
+    weight: number;
+    abilities: {
+        ability: {
+            name: string;
+            url: string;
+        },
+        isHidden: boolean;
+    }[];
+    stats: {
+        base_stat: number;
+        effort: number;
+    }[];
 }
 
 function renderDescription(item: string, props: DetailProps) {
     if (item === 'Abilities') {
-        return <Text>{props.abilities.join(', ')}</Text>;
+        const abilitiesCollection = props.abilities.map((each) => each.ability.name);
+        return (
+            <Text>{abilitiesCollection.join(', ')}</Text>
+        );
     } else if (item === 'Weakness') {
+        const weaknessData = props.stats.map((each) => each.effort);
         return (
             <View style={styles.typeSection}>
                 <View
@@ -37,29 +49,29 @@ function renderDescription(item: string, props: DetailProps) {
                         { backgroundColor: '#FFFFFF', opacity: 0.5 },
                     ]}
                 >
-                    <Text> {props.weaknesses[0]} </Text>
+                    <Text> {weaknessData.join(', ')} </Text>
                 </View>
             </View>
         );
-    } else if (item === 'Genders') {
-        return (
-            <View style={{ flexDirection: 'row' }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <Image source={require('../../assets/male_icon.png')} />
-                    <Text> {props.genderRatio.male} </Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Image source={require('../../assets/female_icon.png')} />
-                    <Text> {props.genderRatio.female} </Text>
-                </View>
-            </View>
-        );
+        //} else if (item === 'Genders') {
+        //    return (
+        //        <View style={{ flexDirection: 'row' }}>
+        //            <View style={{ flexDirection: 'row' }}>
+        //                <Image source={require('../../assets/male_icon.png')} />
+        //                <Text> {props.genderRatio.male} </Text>
+        //            </View>
+        //            <View style={{ flexDirection: 'row' }}>
+        //                <Image source={require('../../assets/female_icon.png')} />
+        //                <Text> {props.genderRatio.female} </Text>
+        //            </View>
+        //        </View>
+        //    );
     } else if (item === 'Species') {
-        return <Text> {props.species} </Text>;
+        return <Text> {props?.species?.name} </Text>;
     } else if (item === 'Height') {
-        return <Text> {props.height} </Text>;
+        return <Text> {props?.height} </Text>;
     } else if (item === 'Weight') {
-        return <Text> {props.weight} </Text>;
+        return <Text> {props?.weight} </Text>;
     }
 }
 
