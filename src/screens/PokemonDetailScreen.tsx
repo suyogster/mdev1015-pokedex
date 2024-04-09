@@ -13,6 +13,13 @@ import Detail from '../components/Detail';
 import DetailStats from '../components/DetailStats';
 import { ApiPokemonDetail } from '../types/IPokemon';
 
+interface PokemonType {
+    type: {
+        name: string;
+        url: string;
+    }
+}
+
 const cardColors = {
     primaryColor: '#FCC800',
     secondaryColor: '#6890F0',
@@ -22,16 +29,19 @@ export default function PokemonDetailScreen(props: any) {
     const { data, index } = props.route.params;
 
     const defaultImage = require('../../assets/Logo_Pokedex.png');
-    console.log("The details data each ::>>", data);
-
-    useEffect(() => {
-        console.log("This is an reload ro check data::>>");
-    }, [data]);
 
     if (!data) {
         return (
-            <View style={styles.container}>
-                <Image source={defaultImage} />
+            <View style={styles.noDataContainer}>
+                <Image
+                    style={{
+                        width: 71,
+                        height: 71,
+                        alignSelf: 'center',
+                        marginLeft: 10,
+                    }}
+                    source={defaultImage}
+                />
                 <Text>
                     Sorry, couldn't fetch data as of now !
                 </Text>
@@ -89,7 +99,7 @@ export default function PokemonDetailScreen(props: any) {
                         </TouchableOpacity>
 
                         <View style={styles.typeSection}>
-                            {types ? (types.map((item, index) => (
+                            {types ? (types.map((item: PokemonType, index: number) => (
                                 <View
                                     key={`#${index.toString()}`}
                                     style={[
@@ -227,6 +237,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 2,
         marginHorizontal: 5,
+    },
+
+    noDataContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     statsSection: {

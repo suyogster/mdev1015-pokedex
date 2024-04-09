@@ -68,7 +68,7 @@ export default function PokemonCard(props: PokemonCardProps) {
         <TouchableOpacity
             key={data.name}
             style={[styles.container, { backgroundColor: assignColor(id) }]}
-            onPress={() => navigation.navigate('Detail', { pokemonDetail, index: id })}
+            onPress={() => navigation.navigate('Detail', { data: pokemonDetail, index: id })}
         >
             <View key={data.name} style={styles.row}>
                 <Text style={[styles.firstRowText, { alignSelf: 'flex-start' }]}>
