@@ -1,6 +1,14 @@
-import {FlatList, SafeAreaView} from 'react-native';
-import React from 'react';
-import {favoriteData} from '../data/mockedPokemon';
+
+import React, { useEffect } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    SafeAreaView,
+} from 'react-native';
+import { favoriteData } from '../data/mockedPokemon';
+
 import FavoriteCard from '../components/FavouriteCard';
 
 export default function FavouriteScreen(props: any) {

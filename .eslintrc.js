@@ -1,4 +1,4 @@
 module.exports = {
-  root: true,
-  extends: '@react-native',
+    root: true,
+    extends: ['plugin:prettier/recommended', '@react-native'],
 };
