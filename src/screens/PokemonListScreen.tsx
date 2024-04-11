@@ -10,8 +10,6 @@ import { usePokemon } from '../context/PokemonContext';
  * This screen contains Search Bar functionality that displays the Pokemon cards by number
  * It also navigates to PokemonDetailScreen
  */
-
-
 export default function PokemonListScreen(props: any) {
     const [query, setQuery] = useState<string>('');
 

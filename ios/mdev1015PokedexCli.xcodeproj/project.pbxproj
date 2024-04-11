@@ -15,6 +15,7 @@
 		7DC0EF3D2B9B7058008A97A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DC0EF3C2B9B7058008A97A3 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		F37F654C7699124AD3379767 /* Pods_mdev1015PokedexCli.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7164B52F4B99C3494316ABDB /* Pods_mdev1015PokedexCli.framework */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		8ACDA7378B4702828ACC23C6 /* Pods-mdev1015PokedexCli.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mdev1015PokedexCli.release.xcconfig"; path = "Target Support Files/Pods-mdev1015PokedexCli/Pods-mdev1015PokedexCli.release.xcconfig"; sourceTree = "<group>"; };
 		C232BBBA666E1AB3EC533716 /* Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.debug.xcconfig"; path = "Target Support Files/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1E4EFBD4B53A308E929B3ED /* Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.release.xcconfig"; path = "Target Support Files/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.release.xcconfig"; sourceTree = "<group>"; };
+
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 				06A0563C29DB3E93672EFC45 /* [CP] Embed Pods Frameworks */,
 				899287F6C365D819376EC0C3 /* [CP] Copy Pods Resources */,
 				2D1B4072D6A8A0922576B423 /* [CP-User] [RNFB] Core Configuration */,
+
 			);
 			buildRules = (
 			);
@@ -271,6 +274,7 @@
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
 		06A0563C29DB3E93672EFC45 /* [CP] Embed Pods Frameworks */ = {
+
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,6 +292,7 @@
 			showEnvVarsInLog = 0;
 		};
 		2D1B4072D6A8A0922576B423 /* [CP-User] [RNFB] Core Configuration */ = {
+
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -319,10 +324,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		65B1C961E9DBEB7E08351F5C /* [CP] Check Pods Manifest.lock */ = {
+
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -345,6 +351,7 @@
 			showEnvVarsInLog = 0;
 		};
 		835BBFF76559A394846F462A /* [CP] Embed Pods Frameworks */ = {
+
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,6 +386,7 @@
 			showEnvVarsInLog = 0;
 		};
 		EE03EDF036D43E4ADC431924 /* [CP] Copy Pods Resources */ = {
+
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,6 +401,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests/Pods-mdev1015PokedexCli-mdev1015PokedexCliTests-resources.sh\"\n";
+
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -428,7 +437,9 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+
 			baseConfigurationReference = C232BBBA666E1AB3EC533716 /* Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.debug.xcconfig */;
+
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -455,7 +466,9 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+
 			baseConfigurationReference = E1E4EFBD4B53A308E929B3ED /* Pods-mdev1015PokedexCli-mdev1015PokedexCliTests.release.xcconfig */;
+
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -479,7 +492,9 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+
 			baseConfigurationReference = 09B6B2FB597CE019B7E66BF5 /* Pods-mdev1015PokedexCli.debug.xcconfig */;
+
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -506,7 +521,9 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+
 			baseConfigurationReference = 8ACDA7378B4702828ACC23C6 /* Pods-mdev1015PokedexCli.release.xcconfig */;
+
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

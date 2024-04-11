@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
 /*This component is also used in the pokemon details screen for describing the stats of each pokemon */

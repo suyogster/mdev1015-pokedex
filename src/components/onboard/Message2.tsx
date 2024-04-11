@@ -1,4 +1,5 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
 
 /*Second screen designed for the onboarding process*/
@@ -7,7 +8,7 @@ export default function Message2() {
   return (
     <>
       <Image
-        style={{ width: 350, height: 350 }}
+        style={{width: 350, height: 350}}
         source={require('../../../assets/Charmander.png')}
       />
       <View
@@ -15,8 +16,7 @@ export default function Message2() {
           flex: 0.8,
           paddingHorizontal: 30,
           alignContent: 'center',
-        }}
-      >
+        }}>
         <Text style={styles.onboardTitle}>Explore Pokémon</Text>
         <Text style={styles.onboardContent}>
           Swipe through the pages to explore{'\n'} different Pokémon and tap on

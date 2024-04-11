@@ -1,11 +1,12 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import FavouriteScreen from './FavouriteScreen';
 import ProfileScreen from './ProfileScreen';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import PokemonListScreen from './PokemonListScreen';
-import { Image, Text } from 'react-native';
-import { colors } from '../theme/theme';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {Image} from 'react-native';
+import {colors} from '../theme/theme';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import PokemonDetailScreen from './PokemonDetailScreen';
 
 const Tab = createBottomTabNavigator();
@@ -13,16 +14,16 @@ const Pokemon = createNativeStackNavigator();
 
 function PokemonStackScreens() {
   return (
-    <Pokemon.Navigator initialRouteName='List'>
+    <Pokemon.Navigator initialRouteName="List">
       <Pokemon.Screen
-        name='List'
+        name="List"
         component={PokemonListScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Pokemon.Screen
-        name='Detail'
+        name="Detail"
         component={PokemonDetailScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
     </Pokemon.Navigator>
   );
@@ -30,13 +31,13 @@ function PokemonStackScreens() {
 
 export default function HomeScreen() {
   return (
-    <Tab.Navigator initialRouteName='Dashboard'>
+    <Tab.Navigator initialRouteName="Dashboard">
       <Tab.Screen
-        name='Favorite'
+        name="Favorite"
         options={{
           headerShown: true,
           title: 'Favorites',
-          tabBarIcon: ({ focused }) => {
+          tabBarIcon: ({focused}) => {
             return (
               <Image
                 tintColor={focused ? colors.primary : 'gray'}
@@ -49,11 +50,11 @@ export default function HomeScreen() {
       />
 
       <Tab.Screen
-        name='Dashboard'
+        name="Dashboard"
         options={{
           headerShown: false,
           title: 'Dashboard',
-          tabBarIcon: ({ focused }) => {
+          tabBarIcon: ({focused}) => {
             return (
               <Image
                 tintColor={focused ? colors.primary : 'gray'}
@@ -66,11 +67,11 @@ export default function HomeScreen() {
       />
 
       <Tab.Screen
-        name='Profile'
+        name="Profile"
         options={{
           headerShown: true,
-          title: `Trainer's Profile`,
-          tabBarIcon: ({ focused }) => {
+          title: "Trainer's Profile",
+          tabBarIcon: ({focused}) => {
             return (
               <Image
                 tintColor={focused ? colors.primary : 'gray'}

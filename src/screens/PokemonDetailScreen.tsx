@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
     View,
     Text,
@@ -271,4 +272,5 @@ const styles = StyleSheet.create({
         //Change for android
         paddingBottom: Platform.OS == "ios" ? 0 : 10,
     },
+
 });

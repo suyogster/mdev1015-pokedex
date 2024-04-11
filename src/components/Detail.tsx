@@ -1,6 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { ApiPokemonDetail } from '../types/IPokemon';
+
 
 /*This component is to be used for the details screen of each pokemon for describing its abilities and strengths */
 
@@ -94,6 +96,7 @@ export default function Detail(props: DetailProps) {
                     </View>
                 </View>
             ))}
+
         </View>
     );
 }
