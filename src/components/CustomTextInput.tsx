@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 import React from 'react';
-import {colors} from '../theme/theme';
+import { colors } from '../theme/theme';
 
 /* Reusable component used for implementing the input fields through multiple components */
 interface Props {
@@ -16,15 +16,16 @@ const defaultProps: Partial<Props> = {
 };
 
 export default function CustomTextInput(props: Props) {
-  const {label, secureTextEntry, value, onChange} = props;
+  const { label, secureTextEntry, value, onChange } = props;
   return (
-    <View style={{marginVertical: 8}}>
+    <View style={{ marginVertical: 8 }}>
       <Text>{label}</Text>
       <TextInput
         secureTextEntry={secureTextEntry}
         style={styles.textInput}
         value={value}
         onChangeText={onChange}
+        autoCapitalize="none"
       />
     </View>
   );
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: colors.textBox,
     shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
     height: 50,

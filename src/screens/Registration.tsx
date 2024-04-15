@@ -1,18 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, TouchableOpacity, View, Alert} from 'react-native';
-import React, {useState} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {colors} from '../theme/theme';
+import { StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { colors } from '../theme/theme';
 import AuthHeader from '../components/AuthHeader';
 import CustomTextInput from '../components/CustomTextInput';
-import {signUp} from '../controller/authController';
+import { signUp } from '../controller/authController';
+import IUser from '../types/IUser';
 
 interface RegistrationScreenProps {
   navigation: any;
 }
 
 export default function Registration(props: RegistrationScreenProps) {
-  const {navigation} = props;
+  const { navigation } = props;
 
   const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,7 +24,8 @@ export default function Registration(props: RegistrationScreenProps) {
   const handleSignUp = async () => {
     setLoading(true);
     try {
-      signUp(email, password);
+      const user = { email, username, favorites: [] } as IUser;
+      signUp(user, password);
       navigation.navigate('Login');
       Alert.alert(
         'Congratulations!',
@@ -39,7 +41,7 @@ export default function Registration(props: RegistrationScreenProps) {
     <SafeAreaView style={style.container}>
       <AuthHeader />
 
-      <View style={{flex: 1 / 2}}>
+      <View style={{ flex: 1 / 2 }}>
         <CustomTextInput
           label={'Username'}
           value={username}
@@ -59,7 +61,7 @@ export default function Registration(props: RegistrationScreenProps) {
           secureTextEntry
         />
 
-        <View style={{marginVertical: 50}}>
+        <View style={{ marginVertical: 50 }}>
           <TouchableOpacity style={style.button} onPress={() => handleSignUp()}>
             <Text
               style={{
@@ -67,7 +69,8 @@ export default function Registration(props: RegistrationScreenProps) {
                 fontWeight: 'bold',
                 fontSize: 16,
                 color: 'white',
-              }}>
+              }}
+            >
               REGISTER
             </Text>
           </TouchableOpacity>
@@ -77,7 +80,8 @@ export default function Registration(props: RegistrationScreenProps) {
               marginTop: 24,
               fontWeight: '400',
               fontSize: 13,
-            }}>
+            }}
+          >
             Already a trainer?{' '}
             <Text
               onPress={() => navigation.navigate('Login')}
@@ -85,7 +89,8 @@ export default function Registration(props: RegistrationScreenProps) {
                 textDecorationLine: 'underline',
                 color: colors.primary,
                 fontWeight: 'bold',
-              }}>
+              }}
+            >
               Signin
             </Text>
           </Text>

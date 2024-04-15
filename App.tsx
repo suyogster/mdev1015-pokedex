@@ -6,36 +6,39 @@ import RegistrationScreen from './src/screens/Registration';
 import HomeScreen from './src/screens/HomeScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen';
 import { PokemonProvider } from './src/context/PokemonContext';
+import { UserProvider } from './src/context/UserContext';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-    return (
-        <PokemonProvider>
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="Registration">
-                    <Stack.Screen
-                        name="Login"
-                        options={{ headerShown: false }}
-                        component={LoginScreen}
-                    />
-                    <Stack.Screen
-                        name="Registration"
-                        options={{ headerShown: false }}
-                        component={RegistrationScreen}
-                    />
-                    <Stack.Screen
-                        name="Onboard"
-                        options={{ headerShown: false }}
-                        component={OnboardingScreen}
-                    />
-                    <Stack.Screen
-                        name="Home"
-                        options={{ headerShown: false }}
-                        component={HomeScreen}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </PokemonProvider>
-    );
+  return (
+    <UserProvider>
+      <PokemonProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen
+              name="Login"
+              options={{ headerShown: false }}
+              component={LoginScreen}
+            />
+            <Stack.Screen
+              name="Registration"
+              options={{ headerShown: false }}
+              component={RegistrationScreen}
+            />
+            <Stack.Screen
+              name="Onboard"
+              options={{ headerShown: false }}
+              component={OnboardingScreen}
+            />
+            <Stack.Screen
+              name="Home"
+              options={{ headerShown: false }}
+              component={HomeScreen}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PokemonProvider>
+    </UserProvider>
+  );
 }

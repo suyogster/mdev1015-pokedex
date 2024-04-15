@@ -1,29 +1,34 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {colors} from '../theme/theme';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { colors } from '../theme/theme';
 import AuthHeader from '../components/AuthHeader';
 import CustomTextInput from '../components/CustomTextInput';
-import {signIn} from '../controller/authController';
+import { signIn } from '../controller/authController';
+import { useUser } from '../context/UserContext';
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
 interface LoginScreenProps {
-  navigation: any;
+  navigation: NavigationProp<ParamListBase>;
 }
 
 export default function LoginScreen(props: LoginScreenProps) {
-  const {navigation} = props;
+  const { navigation } = props;
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  const { setUserId } = useUser();
+
   const handleLogin = async () => {
     console.log('Check the login credentials::>>', email, password);
     try {
-      signIn(email, password);
+      const uid = await signIn(email, password);
+      setUserId(uid);
       navigation.navigate('Onboard');
     } catch (error) {
-      console.error('Login error:', error);
+      Alert.alert('Invalid Credentials');
     }
   };
 
@@ -31,7 +36,7 @@ export default function LoginScreen(props: LoginScreenProps) {
     <SafeAreaView style={style.container}>
       <AuthHeader />
 
-      <View style={{flex: 1 / 2}}>
+      <View style={{ flex: 1 / 2 }}>
         <CustomTextInput label={'Username'} onChange={setEmail} />
         <CustomTextInput
           label={'Password'}
@@ -39,7 +44,7 @@ export default function LoginScreen(props: LoginScreenProps) {
           secureTextEntry={true}
         />
 
-        <View style={{marginVertical: 50}}>
+        <View style={{ marginVertical: 50 }}>
           <TouchableOpacity style={style.button} onPress={handleLogin}>
             <Text
               style={{
@@ -47,7 +52,8 @@ export default function LoginScreen(props: LoginScreenProps) {
                 fontWeight: 'bold',
                 fontSize: 16,
                 color: 'white',
-              }}>
+              }}
+            >
               LOGIN
             </Text>
           </TouchableOpacity>
@@ -57,7 +63,8 @@ export default function LoginScreen(props: LoginScreenProps) {
               marginTop: 24,
               fontWeight: '400',
               fontSize: 13,
-            }}>
+            }}
+          >
             Are you a new trainer?{' '}
             <Text
               onPress={() => navigation.navigate('Registration')}
@@ -65,7 +72,8 @@ export default function LoginScreen(props: LoginScreenProps) {
                 textDecorationLine: 'underline',
                 color: colors.primary,
                 fontWeight: 'bold',
-              }}>
+              }}
+            >
               Register
             </Text>
           </Text>
